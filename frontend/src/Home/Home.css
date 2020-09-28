@@ -1,0 +1,25 @@
+.Paragraph{
+  margin-left : 40%;
+  margin-top  : 15%;
+
+}
+.button4 {
+  border-radius: 19px;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left: 45%;
+  margin-top : 10%;
+}
+body{
+  background-color:#F3EBE1;
+}
