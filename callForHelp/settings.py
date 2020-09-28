@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'Home',
     'Advice',
     'Facts',
-    'Visuals'
-
+    'Visuals',
 ]
 
 MIDDLEWARE = [

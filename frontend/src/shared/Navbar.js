@@ -7,9 +7,9 @@ class Navbar extends React.Component{
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <ul>
       <li><a class="active" href="#Home">Home</a></li>
-      <li><a href="#Facts">Facts</a></li>
       <li><a href="#Advice">Advice</a></li>
       <li><a href="#Visuals">Visual Data</a></li>
+      <li><a href="#Facts">About</a></li>
     </ul>
 </nav>
     </div>
