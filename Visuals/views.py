@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import os
 import io
 import urllib, base64
+import time
+
 dataframe =pd.read_csv(os.path.join(r"C:\Users\mohan\Machine-learning-models\datasets",'share-deaths-suicide.csv'))
 years =  np.unique(dataframe['Year'])
 countries = np.unique(dataframe['Entity'])
@@ -35,7 +37,7 @@ def plot_country(country_name, country_deaths):
     string = base64.b64encode(buffer.read())
     uri = urllib.parse.quote(string)
     return uri
+
 def Visuals(request):
     uri = view_countryRate('Afghanistan')
-    print(uri)
     return render(request, 'Home.html',{'data':uri})

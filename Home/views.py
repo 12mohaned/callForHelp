@@ -1,15 +1,12 @@
 from django.shortcuts import render
-import praw
-import csv
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, PunktSentenceTokenizer
 from nltk.stem import PorterStemmer, WordNetLemmatizer
-
+import pickle
 stop_words = set(stopwords.words("english"))
 punctuations=["?",":","!",".",",",";","--","-","’",";","[","]","”", "“","..","(",")"]
 word_lemmatizer = WordNetLemmatizer()
-
 #check if a word is a stop word
 def is_stopword(word):
     if word in stop_words:
@@ -59,3 +56,9 @@ def Tokenize(Text):
                     word = lemmatizing(word, word_type)
                     output.append(word)
     return output
+
+def de_serialize():
+    pickled_model = open('naive_bayes_model.sav', 'rb')
+    naive_bayes_classifier = pickle.load(pickled_model)
+    fileObj.close()
+    return naive_bayes_classifier
