@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'Advice',
     'Facts',
     'Visuals',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
