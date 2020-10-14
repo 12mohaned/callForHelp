@@ -3,10 +3,20 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, PunktSentenceTokenizer
 from nltk.stem import PorterStemmer, WordNetLemmatizer
+from nltk import NaiveBayesClassifier, classify
+
 import pickle
 stop_words = set(stopwords.words("english"))
 punctuations=["?",":","!",".",",",";","--","-","’",";","[","]","”", "“","..","(",")"]
 word_lemmatizer = WordNetLemmatizer()
+
+
+def Home(request):
+    classifier = de_serialize()
+    text = Tokenize('I hurt myself today to see if i can feel i focus on the pain')
+    print(classifier.classify(text))
+
+    return render(request, template_name = 'Home.html')
 #check if a word is a stop word
 def is_stopword(word):
     if word in stop_words:
@@ -21,10 +31,10 @@ def is_Punk(word):
 
 #returning the verb to it's origin
 def lemmatizing(word, word_tag):
-    if(word_type == 'VBP'):
+    if(word_tag == 'VBP'):
         pos = 'v'
     else:
-        if (word_type == 'NN'):
+        if (word_tag == 'NN'):
             pos = 'n'
         else:
             pos = 'a'
@@ -55,10 +65,12 @@ def Tokenize(Text):
                 if check_importance(word_type):
                     word = lemmatizing(word, word_type)
                     output.append(word)
+    output = dict([token, True] for token in output)
     return output
 
 def de_serialize():
-    pickled_model = open('naive_bayes_model.sav', 'rb')
+
+    pickled_model = open('C://Users//mohan//callForHelp//Home//naive_bayes_model.sav', 'rb')
     naive_bayes_classifier = pickle.load(pickled_model)
-    fileObj.close()
+    pickled_model.close()
     return naive_bayes_classifier
